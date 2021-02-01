@@ -18,7 +18,9 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-Next.js has built-in support for loading environment variables from .env-files into process.env. It loads environment variables from the .env.local into the Node.js environment. NextJS keeps server-only secrets safe. The env variables are not exposed to the browser unless explicitly set so!
+`.env` contains the defaults, `.env.local` - file must be made to store secrets!
+
+Next.js has built-in support for loading environment variables from .env-local into process.env. It loads environment variables from the .env.local into the Node.js environment. NextJS keeps server-only secrets safe. The env variables are not exposed to the browser unless explicitly set so!
 
 ## Deployment
 

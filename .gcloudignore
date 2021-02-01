@@ -1,2 +1,5 @@
 # Next.js source code
 /pages/
+.next
+node_modules
+styles

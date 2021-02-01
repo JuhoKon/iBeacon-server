@@ -60,7 +60,7 @@ const InfoTemplate = ({ params, json }): ReactElement => {
       <h1>To be filled with content :-)</h1>
       <p>GroupId: {params.groupId}</p>
       <p>BeaconId: {params.beaconId}</p>
-      <p>Time retrieved from API buildtime : {json.unixtime}</p>
+      <p>Current time in UNIX retrieved from API : {json.unixtime}</p>
     </>
   );
 };

@@ -6,3 +6,6 @@ handlers:
   - url: /.*
     secure: always
     script: auto
+
+vpc_access_connector:
+  name: "projects/imatrabeacondev-2/locations/europe-west3/connectors/test-connector"

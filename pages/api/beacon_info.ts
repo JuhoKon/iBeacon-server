@@ -1,4 +1,6 @@
 //in form of /api/beacon_info?groupId=123&beaconId=123
+import SFirestore from "../../backend/services/FirebaseInstance";
+const FirebaseInstance = SFirestore.getInstance();
 
 export default function handler(req, res) {
   // Get data from your database

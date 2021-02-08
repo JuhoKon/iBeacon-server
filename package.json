@@ -10,9 +10,11 @@
     "build-static": "next build && next export"
   },
   "dependencies": {
+    "@google-cloud/firestore": "^4.9.2",
     "next": "10.0.6",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "redis": "^3.0.2"
   },
   "devDependencies": {
     "@types/node": "^14.14.22",

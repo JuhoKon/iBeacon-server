@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+TODO: dockerize with Redis
+
 ## Getting Started
 
 First, run the development server:
@@ -20,7 +22,9 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 Backend logic itself is found under `backend` - folder.
 
-## Environment variables
+## Environment variables | authentication
+
+[See](https://cloud.google.com/docs/authentication/production) for authentication with a service account.
 
 `.env` contains the defaults, `.env.local` - file must be made to store secrets!
 

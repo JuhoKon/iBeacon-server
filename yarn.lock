@@ -99,6 +99,13 @@
     functional-red-black-tree "^1.0.1"
     google-gax "^2.9.2"
 
+"@google-cloud/redis@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@google-cloud/redis/-/redis-2.2.0.tgz#8080a193344a9f811ed68bca350e34b6be83bec2"
+  integrity sha512-4D+QNqI8jx2csAxJ3G1YIpzGHbR+sqv9gvOL1xOsU6OYhquTZXR6eT4+N2kp6B4nHZkBVDn1SNBgk1ItUjxiCA==
+  dependencies:
+    google-gax "^2.9.2"
+
 "@grpc/grpc-js@~1.2.0":
   version "1.2.6"
   resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.2.6.tgz#579c433ab9b9dda8a62080db1ac0c86dce58bbaa"

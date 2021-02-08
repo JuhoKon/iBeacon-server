@@ -1,9 +1,13 @@
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
-import { ReactElement } from "react";
+import { GetStaticProps, GetStaticPropsContext } from "next";
+import { useRouter } from "next/dist/client/router";
+import React, { ReactElement } from "react";
+import Loading from "../../../components/Loading";
+import { TestCall } from "../../../lib/Api";
 
-interface Context extends GetStaticPropsContext {
-  query: { groupId: string; beaconId: string };
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
 export const getStaticPaths: any = async () => {
   return {
     paths: [
@@ -14,16 +18,15 @@ export const getStaticPaths: any = async () => {
         },
       },
     ],
-    fallback: "blocking",
+    fallback: true,
   };
 };
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   // Fetch data here for the pages according to the groupID and beaconID
   // We can create a custom Error page that will be statically available, when the content is not found
   // through error status returned from our BE
-  const res = await fetch("http://worldtimeapi.org/api/ip");
-  const json = await res.json();
-
+  const json = await TestCall();
+  await sleep(3000);
   return {
     props: { json, params },
 
@@ -33,8 +36,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 const InfoTemplate = ({ params, json }): ReactElement => {
+  const router = useRouter();
   console.log(params); //groupId, beaconId
-
+  if (router.isFallback) {
+    return <Loading />;
+  }
   return (
     <>
       <h1>To be filled with content :-)</h1>

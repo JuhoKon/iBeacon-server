@@ -1,9 +1,8 @@
 import redis from "redis";
-import { CloudRedisClient } from "@google-cloud/redis";
+
 class SRedis {
   private static instance: SRedis;
   private redisClient: redis;
-  private gcloud: CloudRedisClient;
 
   private constructor() {
     const settings = {
@@ -13,9 +12,6 @@ class SRedis {
 
     const redisClient = redis.createClient(settings);
     this.redisClient = redisClient;
-
-    const client = new CloudRedisClient();
-    this.gcloud = client;
   }
 
   public static getInstance(): SRedis {

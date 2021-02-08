@@ -14,7 +14,7 @@ export default function handler(req, res) {
     }
     console.log(groupId, beaconId);
     console.log(process.env.DB_HOST);
-    res.status(200).json({ OK: process.env.DB_HOST });
+    res.status(200).json({ data: { groupId, beaconId } });
   } else {
     // Handle any other HTTP method
     res.status(404).json({ Error: "That's an error." });

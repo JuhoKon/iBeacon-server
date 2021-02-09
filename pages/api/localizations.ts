@@ -7,9 +7,9 @@ export default async function handler(req, res) {
   // Get data from your database
   if (req.method === "GET") {
     // Process a GET request
-    const data = await FirebaseInstance.getLocalizations();
+    const results = await FirebaseInstance.getLocalizations();
 
-    res.status(200).json({ data });
+    res.status(200).json({ results });
   } else {
     // Handle any other HTTP method
     res.status(404).json({ Error: "That's an error." });

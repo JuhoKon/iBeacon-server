@@ -32,12 +32,16 @@ class SFirestore {
       console.log("Serving from cache");
       return valueFromCache;
     }
+    let obj = {};
     const snapshot = await this.firestore.collection(LOCALIZATION).get();
-    const data = snapshot.docs.map((doc) => {
-      return { localizationId: doc.id, ...doc.data() };
+    /*     const data = snapshot.docs.map((doc) => {
+      return { localization: doc.id, ...doc.data() };
+    }); */
+    snapshot.docs.forEach((doc) => {
+      obj[doc.id] = doc.data();
     });
-    this.redisInstance.setKey(LOCALIZATION, data);
-    return data;
+    this.redisInstance.setKey(LOCALIZATION, obj);
+    return obj;
   }
 
   // setup listener for changes in documents by collections

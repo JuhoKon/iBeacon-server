@@ -5,13 +5,13 @@ import SRedis from "./RedisInstance";
 class SFirestore {
   private static instance: SFirestore;
   private firestore: Firestore;
-  private redisClient: SRedis;
+  private redisInstance: SRedis;
 
   private constructor() {
     const firestore = new Firestore();
     const RedisInstance = SRedis.getInstance();
     this.firestore = firestore;
-    this.redisClient = RedisInstance;
+    this.redisInstance = RedisInstance;
   }
 
   public static getInstance(): SFirestore {
@@ -23,16 +23,20 @@ class SFirestore {
 
   public async getLocalizations(): Promise<any> {
     // TODO error handling
-    const valueFromCache = await this.redisClient.getValue(LOCALIZATION);
+    const valueFromCache = await this.redisInstance
+      .getValue(LOCALIZATION)
+      .catch((e) => {
+        console.log(e);
+      });
     if (valueFromCache) {
       console.log("Serving from cache");
-      return { valueFromCache };
+      return valueFromCache;
     }
     const snapshot = await this.firestore.collection(LOCALIZATION).get();
     const data = snapshot.docs.map((doc) => {
       return { localizationId: doc.id, ...doc.data() };
     });
-    this.redisClient.setKey(LOCALIZATION, data);
+    this.redisInstance.setKey(LOCALIZATION, data);
     return data;
   }
 

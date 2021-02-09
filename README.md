@@ -1,14 +1,20 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-TODO: dockerize with Redis
+## Redis
+
+You need to have `Redis` running on your system! The host and port for development is configured on the `.env` - file.
+
+## Database
+
+We are using the GCP's client library for Firestore. To interact with the database locally, see [this.](https://cloud.google.com/docs/authentication/production#automatically) Note that you have to configure this to develop the application.
 
 ## Getting Started
+
+After you have Redis running and GCP client authentication set up, you're ready to start developing the application.
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
@@ -22,23 +28,19 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 Backend logic itself is found under `backend` - folder.
 
-## Environment variables | authentication
-
-[See](https://cloud.google.com/docs/authentication/production) for authentication with a service account.
-
-`.env` contains the defaults, `.env.local` - file must be made to store secrets!
-
-Next.js has built-in support for loading environment variables from .env-local into process.env. It loads environment variables from the .env.local into the Node.js environment. NextJS keeps server-only secrets safe. The env variables are not exposed to the browser unless explicitly set so!
-
-Note: `.env` files should be included in your repository as they define defaults. `.env*.local` should be added to .gitignore, as those files are intended to be ignored. `.env.local` is where secrets can be stored. [Read more.]('https://nextjs.org/docs/basic-features/environment-variables')
-
 ## Deployment
 
 Just run the following command:
 
 ```bash
-yarn deploy
+./deploy.sh
 ```
+
+You can edit the script if you need to change configurations. The script builds a container image, puloads the image to the Con.tainer Registry, and then deploys the container image to Cloud Run, [instructions.](https://cloud.google.com/run/docs/quickstarts/build-and-deploy)
+
+Once the application is running in the Google Cloud environment, it uses the default service account to interact and call other Google Cloud APIs. In our case, it uses the Firestore DB. You might need to change the Service Account's access rights.
+
+To use memorystore (Redis) on the Google Cloud, we need to configure Serverless VPC Access. Cloud Run must also be in the same region as the Redis instance. For instructions see: [instructions.](https://cloud.google.com/memorystore/docs/redis/connect-redis-instance-cloud-run)
 
 ## Learn More
 

@@ -26,7 +26,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // We can create a custom Error page that will be statically available, when the content is not found
   // through error status returned from our BE
   const json = await TestCall();
-  await sleep(3000);
   return {
     props: { json, params },
 

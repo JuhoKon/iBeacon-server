@@ -28,19 +28,36 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 Backend logic itself is found under `backend` - folder.
 
+## Pages
+
+Pages are found in `pages/content[groupId]/[beaconId].tsx`. For example for group 1 and beacon 12, the page would be: [http://localhost:3000/content/1/12]
+
 ## Deployment
 
-Just run the following command:
+Just run the following commands:
 
 ```bash
-./deploy.sh
+yarn deploy
 ```
 
-You can edit the script if you need to change configurations. The script builds a container image, puloads the image to the Con.tainer Registry, and then deploys the container image to Cloud Run, [instructions.](https://cloud.google.com/run/docs/quickstarts/build-and-deploy)
+Or manually run the scripts:
+
+```bash
+cd scripts/ && ./build.sh
+cd scripts/ && ./deploy.sh
+```
+
+You can edit the script if you need to change configurations. The script builds a container image, loads the image to the Con.tainer Registry, and then deploys the container image to Cloud Run, [instructions.](https://cloud.google.com/run/docs/quickstarts/build-and-deploy)
 
 Once the application is running in the Google Cloud environment, it uses the default service account to interact and call other Google Cloud APIs. In our case, it uses the Firestore DB. You might need to change the Service Account's access rights.
 
 To use memorystore (Redis) on the Google Cloud, we need to configure Serverless VPC Access. Cloud Run must also be in the same region as the Redis instance. For instructions see: [instructions.](https://cloud.google.com/memorystore/docs/redis/connect-redis-instance-cloud-run)
+
+Also to build apiDoc, you need to have apiDoc installed globally.
+
+```bash
+ npm install -g apidoc
+```
 
 ## Learn More
 

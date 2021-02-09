@@ -6,8 +6,7 @@ REGION=europe-west3
 PROJECTID=$(gcloud config get-value project)
 
 echo Building project...
-gcloud builds submit \
-  --tag gcr.io/$PROJECTID/nextjs
+cd ..
 echo Deploying project...
 gcloud run deploy \
   --image gcr.io/$PROJECTID/nextjs \

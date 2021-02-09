@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "start:production": "next start -p $PORT"
+    "start:production": "next start -p $PORT",
+    "deploy": "cd scripts && ./build.sh && ./deploy.sh"
   },
   "dependencies": {
     "@google-cloud/firestore": "^4.9.2",

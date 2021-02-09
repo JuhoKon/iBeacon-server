@@ -1,6 +1,19 @@
 //in form of /api/beacon_info?groupId=123&beaconId=123
 
-//in form of /api/beacon_info?groupId=123&beaconId=123%template=true
+//in form of /api/beacon_info?groupId=123&beaconId=123&template=true
+
+/**
+ * @api {get}/api/beacon_info:groupId:beaconId:template Request User information
+ * @apiName get beaconInfo
+ * @apiGroup Beacon_Info
+ *
+ * @apiParam {String} groupId Group ID
+ * @apiParam {String} beaconId Beacon ID
+ * @apiParam {Boolean} template Boolean if we're rendering a template (extra information)
+ * @apiExample {curl} Example usage:
+ *    curl -i http://localhost:8080/api/beacon_info?groupId=123&beaconId=123&template=true
+ * @apiSuccess {String} beacon info...
+ */
 export default function handler(req, res) {
   // Get data from your database
   if (req.method === "GET") {

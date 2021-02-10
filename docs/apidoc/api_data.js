@@ -56,7 +56,7 @@ define({ "api": [
     "type": "get",
     "url": "/api/localizations",
     "title": "Request localization information",
-    "name": "get_beaconInfo",
+    "name": "get_localizations",
     "group": "Beacon_Info",
     "examples": [
       {

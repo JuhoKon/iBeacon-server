@@ -28,7 +28,7 @@
             "size": "0-1",
             "optional": true,
             "field": "template",
-            "description": "<p>Number if we're rendering a template (extra information)</p>"
+            "description": "<p>If we want extra information (for BE rendering)</p>"
           }
         ]
       }

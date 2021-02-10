@@ -7,7 +7,7 @@ import { CORS } from "../../backend/middleware/cors";
  *
  * @apiParam {String} groupId Group ID
  * @apiParam {String} beaconId Beacon ID
- * @apiParam {Boolean} [template] Boolean if we're rendering a template (extra information)
+ * @apiParam {number{0-1}} [template] Number if we're rendering a template (extra information)
  * @apiExample {curl} Example usage:
  *    curl -i http://localhost:8080/api/beacon_info?groupId=123&beaconId=123&template=true
  * @apiSuccessExample Success-Response:
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
         .status(400)
         .json({ Error: "All parameters were not provided." });
     }
-    if (template) {
+    if (template == 1) {
       return res.status(200).json({
         results: { groupId, beaconId, template: "Extra stuff for you." },
       });

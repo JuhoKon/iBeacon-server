@@ -24,10 +24,11 @@ define({ "api": [
           },
           {
             "group": "Parameter",
-            "type": "Boolean",
+            "type": "number",
+            "size": "0-1",
             "optional": true,
             "field": "template",
-            "description": "<p>Boolean if we're rendering a template (extra information)</p>"
+            "description": "<p>Number if we're rendering a template (extra information)</p>"
           }
         ]
       }

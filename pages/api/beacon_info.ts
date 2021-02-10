@@ -1,29 +1,7 @@
-//in form of /api/beacon_info?groupId=123&beaconId=123
-
-//in form of /api/beacon_info?groupId=123&beaconId=123&template=true
-import Cors from "cors";
-
-// Initializing the cors middleware
-const cors = Cors({
-  methods: ["GET", "HEAD"],
-});
-
-// Helper method to wait for a middleware to execute before continuing
-// And to throw an error when an error happens in a middleware
-function runMiddleware(req, res, fn) {
-  return new Promise((resolve, reject) => {
-    fn(req, res, (result) => {
-      if (result instanceof Error) {
-        return reject(result);
-      }
-
-      return resolve(result);
-    });
-  });
-}
+import { CORS } from "../../backend/middleware/cors";
 
 /**
- * @api {get}/api/beacon_info:groupId:beaconId:template Request User information
+ * @api {get}/api/beacon_info Request Beacon information
  * @apiName get beaconInfo
  * @apiGroup Beacon_Info
  *
@@ -32,10 +10,19 @@ function runMiddleware(req, res, fn) {
  * @apiParam {Boolean} template Boolean if we're rendering a template (extra information)
  * @apiExample {curl} Example usage:
  *    curl -i http://localhost:8080/api/beacon_info?groupId=123&beaconId=123&template=true
- * @apiSuccess {String} beacon info...
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *        "results": {
+ *           "title" : "Beacon title",
+ *           "desc" : "Beacon description..."
+ *        }
+ *
+ *     }
+ *
  */
 export default async function handler(req, res) {
-  await runMiddleware(req, res, cors);
+  await CORS(req, res);
   // Get data from your database
   if (req.method === "GET") {
     // Process a GET request
@@ -49,7 +36,7 @@ export default async function handler(req, res) {
     }
     if (template) {
       return res.status(200).json({
-        data: { groupId, beaconId, template: "Extra stuff for you." },
+        results: { groupId, beaconId, template: "Extra stuff for you." },
       });
     }
     res.status(200).json({ data: { groupId, beaconId } });

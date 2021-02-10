@@ -1,8 +1,8 @@
 define({ "api": [
   {
     "type": "get",
-    "url": "/api/beacon_info:groupId:beaconId:template",
-    "title": "Request User information",
+    "url": "/api/beacon_info",
+    "title": "Request Beacon information",
     "name": "get_beaconInfo",
     "group": "Beacon_Info",
     "parameter": {
@@ -40,20 +40,42 @@ define({ "api": [
       }
     ],
     "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "beacon",
-            "description": "<p>info...</p>"
-          }
-        ]
-      }
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n   \"results\": {\n      \"title\" : \"Beacon title\",\n      \"desc\" : \"Beacon description...\"\n   }\n\n}",
+          "type": "json"
+        }
+      ]
     },
     "version": "0.0.0",
     "filename": "pages/api/beacon_info.ts",
+    "groupTitle": "Beacon_Info"
+  },
+  {
+    "type": "get",
+    "url": "/api/localizations",
+    "title": "Request localization information",
+    "name": "get_beaconInfo",
+    "group": "Beacon_Info",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl -i http://localhost:8080/api/localizations",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n   \"results\": {\n       \"en\": {\"app_name\":\"Imatra Beacon\"},\n       \"fin\": {\"app_name\":\"Imatra Beacon\"}\n   }\n\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "pages/api/localizations.ts",
     "groupTitle": "Beacon_Info"
   }
 ] });

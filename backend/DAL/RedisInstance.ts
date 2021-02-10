@@ -1,4 +1,5 @@
 import redis from "redis";
+import { CACHE_TTL_SECONDS } from "../../lib/Constants";
 
 function log(type) {
   return function () {
@@ -26,8 +27,7 @@ class SRedis {
   }
 
   public setKey(id: string, value: any) {
-    const timeToStoreSeconds = 60;
-    this.redisClient.SETEX(id, timeToStoreSeconds, JSON.stringify(value));
+    this.redisClient.SETEX(id, CACHE_TTL_SECONDS, JSON.stringify(value));
   }
   public async getValue(id: string): Promise<Record<string, string>> {
     return new Promise((resolve, reject) => {

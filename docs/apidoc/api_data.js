@@ -25,7 +25,7 @@ define({ "api": [
           {
             "group": "Parameter",
             "type": "Boolean",
-            "optional": false,
+            "optional": true,
             "field": "template",
             "description": "<p>Boolean if we're rendering a template (extra information)</p>"
           }

@@ -17,8 +17,8 @@ class SFirestore {
     return SFirestore.instance;
   }
 
-  public async getLocalizations(): Promise<any> {
-    // TODO error handling
+  public async getLocalizations(): Promise<Record<string, string>> {
+    // TODO error handling and typing
     let obj = {};
     const snapshot = await this.firestore.collection(LOCALIZATION).get();
 

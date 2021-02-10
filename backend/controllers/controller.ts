@@ -1,6 +1,6 @@
+import { LOCALIZATION } from "../../lib/Constants";
 import SFirestore from "../DAL/FirebaseInstance";
 import SRedis from "../DAL/RedisInstance";
-import { LOCALIZATION } from "../../lib/Constants";
 
 const RedisInstance = SRedis.getInstance();
 const FirebaseInstance = SFirestore.getInstance();

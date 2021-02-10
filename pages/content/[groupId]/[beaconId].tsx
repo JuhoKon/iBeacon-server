@@ -1,23 +1,12 @@
-import { GetStaticProps, GetStaticPropsContext } from "next";
+import { GetStaticProps } from "next";
 import { useRouter } from "next/dist/client/router";
 import React, { ReactElement } from "react";
 import Loading from "../../../components/Loading";
 import { TestCall } from "../../../lib/Api";
 
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 export const getStaticPaths: any = async () => {
   return {
-    paths: [
-      {
-        params: {
-          groupId: "1",
-          beaconId: "1",
-        },
-      },
-    ],
+    paths: [],
     fallback: true,
   };
 };

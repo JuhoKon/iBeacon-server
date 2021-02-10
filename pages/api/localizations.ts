@@ -2,7 +2,7 @@ import * as Controller from "../../backend/controllers/controller";
 import { CORS } from "../../backend/middleware/cors";
 /**
  * @api {get}/api/localizations Request localization information
- * @apiName get beaconInfo
+ * @apiName get localizations
  * @apiGroup Beacon_Info
  *
  * @apiExample {curl} Example usage:

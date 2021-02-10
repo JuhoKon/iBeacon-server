@@ -36,7 +36,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Example usage:",
-        "content": "curl -i http://localhost:8080/api/beacon_info?groupId=123&beaconId=123&template=true",
+        "content": "curl -i http://localhost:8080/api/beacon_info?groupId=123&beaconId=123&template=1",
         "type": "curl"
       }
     ],

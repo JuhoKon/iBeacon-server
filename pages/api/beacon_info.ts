@@ -9,7 +9,7 @@ import { CORS } from "../../backend/middleware/cors";
  * @apiParam {String} beaconId Beacon ID
  * @apiParam {number{0-1}} [template] Number if we're rendering a template (extra information)
  * @apiExample {curl} Example usage:
- *    curl -i http://localhost:8080/api/beacon_info?groupId=123&beaconId=123&template=true
+ *    curl -i http://localhost:8080/api/beacon_info?groupId=123&beaconId=123&template=1
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {

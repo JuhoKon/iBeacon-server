@@ -44,7 +44,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n   \"results\": {\n      \"title\" : \"Beacon title\",\n      \"desc\" : \"Beacon description...\"\n   }\n\n}",
+          "content": "    HTTP/1.1 200 OK\n{\n \"result\":{\n     \"shortDescription\":{\n        \"fi\":\"Aula\",\n        \"en\":\"Livingroom\"\n     },\n     \"title\":{\n        \"en\":\"Livingroom\",\n        \"fi\":\"Aula\"\n     },\n     \"conditions\":[],\n     \"longDescription\":{\n        \"fi\":\"Oppilaiden olohuone\",\n        \"en\":\"Student's Livingroom\"\n     },\n     \"id\":1,\n     \"beaconId\":\"789\"\n  }\n}",
           "type": "json"
         }
       ]
@@ -78,5 +78,31 @@
     "version": "0.0.0",
     "filename": "pages/api/localizations.ts",
     "groupTitle": "Beacon_Info"
+  },
+  {
+    "type": "get",
+    "url": "/api/tours",
+    "title": "Request localization information",
+    "name": "get_tours",
+    "group": "Tours",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl -i http://localhost:8080/api/tours",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " HTTP/1.1 200 OK\n{\n   \"results\": [\n        {\n        \"name\": {\n            \"en\": \"Student\",\n            \"fi\": \"Oppilas\"\n         },\n        \"groupId\": \"3\"\n        },\n        {\n        \"name\": {\n            \"fi\": \"Opettaja\",\n            \"en\": \"Teacher\"\n        },\n        \"groupId\": \"2\"\n        },\n        {\n        \"name\": {\n            \"fi\": \"Vierailija\",\n            \"en\": \"Visitor\"\n        },\n        \"groupId\": \"1\"\n        }\n   ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "pages/api/tours.ts",
+    "groupTitle": "Tours"
   }
 ]

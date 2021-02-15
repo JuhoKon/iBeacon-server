@@ -1,4 +1,6 @@
+import * as Controller from "../../backend/controllers/controller";
 import { CORS } from "../../backend/middleware/cors";
+import ErrorHandler from "../../lib/HandleError";
 
 /**
  * @api {get}/api/beacon_info Request Beacon information
@@ -12,13 +14,25 @@ import { CORS } from "../../backend/middleware/cors";
  *    curl -i http://localhost:8080/api/beacon_info?groupId=123&beaconId=123&template=1
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
- *     {
- *        "results": {
- *           "title" : "Beacon title",
- *           "desc" : "Beacon description..."
- *        }
- *
- *     }
+ *{
+ *  "result":{
+ *      "shortDescription":{
+ *         "fi":"Aula",
+ *         "en":"Livingroom"
+ *      },
+ *      "title":{
+ *         "en":"Livingroom",
+ *         "fi":"Aula"
+ *      },
+ *      "conditions":[],
+ *      "longDescription":{
+ *         "fi":"Oppilaiden olohuone",
+ *         "en":"Student's Livingroom"
+ *      },
+ *      "id":1,
+ *      "beaconId":"789"
+ *   }
+ *}
  *
  */
 export default async function handler(req, res) {
@@ -34,14 +48,18 @@ export default async function handler(req, res) {
         .status(400)
         .json({ Error: "All parameters were not provided." });
     }
-    if (template == 1) {
+    const getBeaconInfo =
+      template == 1
+        ? Controller.getBeaconInfoFull
+        : Controller.getBeaconInfoShort;
+    try {
+      const result = await getBeaconInfo(groupId, beaconId);
       return res.status(200).json({
-        results: { groupId, beaconId, template: "Extra stuff for you." },
+        result,
       });
+    } catch (error) {
+      const { status, Error } = ErrorHandler(error);
+      return res.status(status).json({ Error });
     }
-    res.status(200).json({ data: { groupId, beaconId } });
-  } else {
-    // Handle any other HTTP method
-    res.status(404).json({ Error: "That's an error." });
   }
 }

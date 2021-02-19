@@ -6,3 +6,4 @@ Dockerfile
 .gitignore
 scripts
 apidoc
+gfunctions

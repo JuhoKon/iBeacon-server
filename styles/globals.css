@@ -1,16 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:ital,wght@0,400;1,600&display=swap");
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
+  font-size: 10px;
+  font-family: "Open Sans", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 * {
   box-sizing: border-box;
+}
+.main-page {
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  white-space: pre-wrap;
+  max-width: 750px;
+  margin: 0 auto;
+}
+.content {
+  padding: 10px;
+}
+.header-component {
+  padding: 10px;
+}
+.imageContainer {
+  width: 100%;
+}
+.imageContainer div {
+  position: unset !important;
+  padding-top: 0 !important;
+}
+img.image123 {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
+  padding-top: 0;
 }

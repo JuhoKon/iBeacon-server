@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import Image from "next/image";
 import { useRouter } from "next/dist/client/router";
 import React, { ReactElement } from "react";
 
@@ -35,15 +35,58 @@ const InfoTemplate = ({ query, beaconInfo }): ReactElement => {
     return <Error statusCode={404} />;
   }
   beaconInfo = beaconInfo as BeaconInfo;
+
+  return (
+    <div className="main-page">
+      <Header />
+      {beaconInfo.mediaUrl.pictureUrl && (
+        <div className="imageContainer">
+          <Image
+            layout="responsive"
+            src={beaconInfo.mediaUrl.pictureUrl}
+            alt="Image"
+            height="auto"
+            width="auto"
+            className="image123"
+          />
+        </div>
+      )}
+      <div className="content">
+        <h1>{beaconInfo.title[localization]}</h1>
+
+        <Description beaconInfo={beaconInfo} localization={localization} />
+
+        {beaconInfo.mediaUrl.videoUrl && (
+          <iframe
+            src={beaconInfo.mediaUrl.videoUrl}
+            title="Beaconinfo video"
+            width="100%"
+            height="250px"
+            allowFullScreen
+          />
+        )}
+      </div>
+    </div>
+  );
+};
+
+const Description = ({ beaconInfo, localization }) => {
   return (
     <>
-      <h1>{beaconInfo.title[localization]}</h1>
-      <div>{beaconInfo.longDescription[localization]}</div>
-      <p>GroupId: {query?.groupId}</p>
-      <p>BeaconId: {query?.beaconId}</p>
-      <p>Loc: {localization}</p>
+      {beaconInfo.longDescription[localization].map(
+        (chapter: React.ReactNode) => (
+          <p>{chapter}</p>
+        )
+      )}
     </>
   );
 };
 
+const Header = () => {
+  return (
+    <div className="header-component">
+      <Image src="/imatra_tunnus.png" alt="Image" width="238px" height="46px" />
+    </div>
+  );
+};
 export default InfoTemplate;

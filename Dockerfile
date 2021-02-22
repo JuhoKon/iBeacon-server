@@ -5,6 +5,7 @@ FROM node:12-alpine AS builder
 WORKDIR /build
 
 COPY package.json yarn.lock ./
+COPY next.config.js ./
 RUN yarn --frozen-lockfile
 
 COPY . .
@@ -17,6 +18,7 @@ FROM node:12-alpine
 WORKDIR /app
 
 COPY package.json yarn.lock ./
+COPY next.config.js ./
 RUN yarn --frozen-lockfile --production
 
 COPY --from=builder /build/.next .next

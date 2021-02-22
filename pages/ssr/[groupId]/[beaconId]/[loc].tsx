@@ -85,7 +85,12 @@ const Description = ({ beaconInfo, localization }) => {
 const Header = () => {
   return (
     <div className="header-component">
-      <Image src="/imatra_tunnus.png" alt="Image" width="238px" height="46px" />
+      <Image
+        src="https://storage.googleapis.com/beaconinfomedia/imatra_tunnus.png"
+        alt="Image"
+        width="238px"
+        height="46px"
+      />
     </div>
   );
 };

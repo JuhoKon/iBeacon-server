@@ -30,7 +30,7 @@ Backend logic itself is found under `backend` - folder. [Api documentation](http
 
 ## Pages
 
-Pages are found in `pages/content[groupId]/[beaconId].tsx`. For example for group 1 and beacon 12, the page would be: [http://localhost:3000/content/1/12]
+Pages are found in `pages/content[groupId]/[beaconId]/[loc].tsx`. For example for group 1 and beacon 12, the page would be: [http://localhost:3000/content/1/12/en] (English) [http://localhost:3000/content/1/12/en] (Finnish)
 
 ## Deployment
 

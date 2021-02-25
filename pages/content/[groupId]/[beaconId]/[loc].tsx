@@ -1,37 +1,29 @@
-import { GetStaticProps } from "next";
+import Image from "next/image";
 import { useRouter } from "next/dist/client/router";
 import React, { ReactElement } from "react";
-import Image from "next/image";
+
 import Error from "next/error";
 import { BeaconInfo } from "../../../../lib/Types";
 import Loading from "../../../../components/Loading";
 import * as Controller from "../../../../backend/controllers/controller";
 
-export const getStaticPaths: any = async () => {
-  return {
-    paths: [],
-    fallback: true,
-  };
-};
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const beaconId = Array.isArray(params.beaconId)
-    ? params.beaconId[0]
-    : params.beaconId;
-  const groupId = Array.isArray(params.groupId)
-    ? params.groupId[0]
-    : params.groupId;
+export async function getServerSideProps({ query }) {
+  const beaconId = Array.isArray(query.beaconId)
+    ? query.beaconId[0]
+    : query.beaconId;
+  const groupId = Array.isArray(query.groupId)
+    ? query.groupId[0]
+    : query.groupId;
   const beaconInfo = await Controller.getBeaconInfoFull(groupId, beaconId);
   return {
-    props: { beaconInfo, params },
-    // Re-generate the page at most per X seconds, if a request comes in
-    revalidate: 10,
+    props: { beaconInfo, query },
   };
-};
+}
 
-const InfoTemplate = ({ params, beaconInfo }): ReactElement => {
+const InfoTemplate = ({ query, beaconInfo }): ReactElement => {
   //TODO: proper typing
   const router = useRouter();
-  const localization = params?.loc;
+  const localization = query?.loc;
 
   if (router.isFallback) {
     return <Loading />;
@@ -48,11 +40,7 @@ const InfoTemplate = ({ params, beaconInfo }): ReactElement => {
     <div className="main-page">
       <Header />
       {beaconInfo.mediaUrl.pictureUrl && (
-        <div
-          style={{
-            width: "100%",
-          }}
-        >
+        <div className="imageContainer">
           <Image
             layout="responsive"
             src={beaconInfo.mediaUrl.pictureUrl}
@@ -73,6 +61,7 @@ const InfoTemplate = ({ params, beaconInfo }): ReactElement => {
             src={beaconInfo.mediaUrl.videoUrl}
             title="Beaconinfo video"
             width="100%"
+            height="250px"
             allowFullScreen
           />
         )}

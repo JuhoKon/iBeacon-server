@@ -1,7 +1,7 @@
 import * as Controller from "../../backend/controllers/controller";
 import { CORS } from "../../backend/middleware/cors";
 /**
- * @api {get}/api/tours Request localization information
+ * @api {get}/api/tours Request tours
  * @apiName get tours
  * @apiGroup Tours
  *

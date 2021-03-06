@@ -82,7 +82,7 @@ define({ "api": [
   {
     "type": "get",
     "url": "/api/tours",
-    "title": "Request localization information",
+    "title": "Request tours",
     "name": "get_tours",
     "group": "Tours",
     "examples": [

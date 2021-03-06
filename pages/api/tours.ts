@@ -12,25 +12,40 @@ import { CORS } from "../../backend/middleware/cors";
  *    {
  *       "results": [
  *            {
- *            "name": {
- *                "en": "Student",
- *                "fi": "Oppilas"
- *             },
- *            "groupId": "3"
+ *              "name": {
+ *                 "en": "Rakennuttaja",
+ *                 "fi": "Constructor"
+ *               },
+ *              "groupId": "3"
+ *              "mapUrl": "mapUrl.com",
+ *              "feedbackUrl": "feedbackUrl.com",
+ *              "beaconInfoIds": [
+ *               "789"
+ *              ]
  *            },
  *            {
- *            "name": {
- *                "fi": "Opettaja",
- *                "en": "Teacher"
- *            },
- *            "groupId": "2"
+ *              "name": {
+ *                 "fi": "Opettaja",
+ *                 "en": "Teacher"
+ *               },
+ *              "groupId": "2"
+ *              "mapUrl": "mapUrl.com",
+ *              "feedbackUrl": "feedbackUrl.com",
+ *              "beaconInfoIds": [
+ *                "123"
+ *              ]
  *            },
  *            {
- *            "name": {
- *                "fi": "Vierailija",
- *                "en": "Visitor"
- *            },
- *            "groupId": "1"
+ *              "name": {
+ *                  "fi": "Vierailija",
+ *                  "en": "Visitor"
+ *              },
+ *              "groupId": "1"
+ *              "mapUrl": "mapUrl.com",
+ *              "feedbackUrl": "feedbackUrl.com",
+ *              "beaconInfoIds": [
+ *                "456"
+ *                ]
  *            }
  *       ]
  *    }

@@ -5,7 +5,7 @@ export interface Tour {
   mapUrl?: string;
   feedbackUrl?: string;
 }
-export interface BeaconInfo extends ErrorType {
+export interface BeaconInfo {
   beaconId: string;
   buttonRedirectUrl?: string;
   conditions?: number[];
@@ -24,7 +24,4 @@ export interface BeaconInfo extends ErrorType {
 interface Locale {
   en: string;
   fi: string;
-}
-interface ErrorType {
-  Error: any;
 }

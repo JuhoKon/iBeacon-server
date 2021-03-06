@@ -14,7 +14,13 @@ export async function getServerSideProps({ query }) {
   const groupId = Array.isArray(query.groupId)
     ? query.groupId[0]
     : query.groupId;
-  const beaconInfo = await Controller.getBeaconInfoFull(groupId, beaconId);
+  let beaconInfo = await Controller.getBeaconInfoFull(
+    groupId,
+    beaconId
+  ).catch((e) => {});
+  if (!beaconInfo) {
+    beaconInfo = null;
+  }
   return {
     props: { beaconInfo, query },
   };
@@ -27,16 +33,17 @@ const InfoTemplate = ({
   query: any;
   beaconInfo: BeaconInfo;
 }): ReactElement => {
-  //TODO: proper typing
   const router = useRouter();
   const localization = query?.loc;
 
   if (router.isFallback) {
     return <Loading />;
   }
-  if (beaconInfo.Error) {
+  if (!beaconInfo) {
     return <Error statusCode={404} />;
   }
+
+  // Can be done dynamically too
   if (!["fi", "en"].includes(localization)) {
     return <Error statusCode={404} />;
   }
@@ -45,7 +52,7 @@ const InfoTemplate = ({
     <div className="main-page">
       <Header />
       <div className="title">
-        <h1>{beaconInfo.location[localization]}</h1>
+        <h1>{beaconInfo.location && beaconInfo.location[localization]}</h1>
       </div>
       <ImageComponent imageUrl={beaconInfo.mediaUrl.imageUrl} />
       <div className="content">

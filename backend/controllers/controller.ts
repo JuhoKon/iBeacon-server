@@ -34,7 +34,6 @@ export const getBeaconInfoFull = async (
   groupId: string,
   beaconId: string
 ): Promise<BeaconInfo> => {
-  console.log(groupId, beaconId);
   const cacheKey = `g:${groupId}b:${beaconId}:full`;
   const resultsFromCache = await RedisInstance.getValue(cacheKey);
   if (resultsFromCache) {

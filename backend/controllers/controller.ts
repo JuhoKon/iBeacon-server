@@ -1,4 +1,5 @@
 import { LOCALIZATION, TOURS } from "../../lib/Constants";
+import { BeaconInfo } from "../../lib/Types";
 import SFirestore from "../DAL/FirebaseInstance";
 import SRedis from "../DAL/RedisInstance";
 
@@ -29,13 +30,16 @@ export const getTours = async () => {
   return results;
 };
 
-export const getBeaconInfoFull = async (groupId: string, beaconId: string) => {
+export const getBeaconInfoFull = async (
+  groupId: string,
+  beaconId: string
+): Promise<BeaconInfo> => {
   console.log(groupId, beaconId);
   const cacheKey = `g:${groupId}b:${beaconId}:full`;
   const resultsFromCache = await RedisInstance.getValue(cacheKey);
   if (resultsFromCache) {
     console.log(`Returning cache value for ${cacheKey}`);
-    return resultsFromCache;
+    return <BeaconInfo>resultsFromCache;
   }
   console.log("Loading from DB.");
   const results = await FirebaseInstance.getBeaconInfoFull(groupId, beaconId);

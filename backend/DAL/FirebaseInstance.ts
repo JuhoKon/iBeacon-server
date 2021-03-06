@@ -31,10 +31,17 @@ class SFirestore {
   public async getTours(): Promise<any> {
     const snapshot = await this.firestore.collection(TOURS).get();
     const data = snapshot.docs.map((doc) => {
-      const document = doc.data();
+      const document = doc.data() as Tour;
+      const beaconInfos = document["beaconInfos"];
+      const beaconInfoIds = beaconInfos.map((beaconInfo: BeaconInfo) => {
+        return beaconInfo.beaconId;
+      });
       return {
-        name: document["name"],
-        groupId: document["groupId"],
+        name: document.name,
+        groupId: document.groupId,
+        mapUrl: document.mapUrl,
+        feedbackUrl: document.feedbackUrl,
+        beaconInfoIds: beaconInfoIds,
       };
     });
     return data;
@@ -73,9 +80,8 @@ class SFirestore {
       );
       if (beaconInfo) {
         return {
-          title: beaconInfo.title,
-          shortDescription: beaconInfo.shortDescription,
-          beaconId: beaconInfo.beaconId,
+          location: beaconInfo.location,
+          notification: beaconInfo.notification,
           conditions: beaconInfo.conditions,
         };
       }

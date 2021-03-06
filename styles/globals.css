@@ -1,11 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:ital,wght@0,400;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;1,500;1,800&display=swap");
 
 html,
 body {
   padding: 0;
   margin: 0;
   font-size: 10px;
-  font-family: "Open Sans", sans-serif;
   font-family: "Raleway", sans-serif;
 }
 
@@ -20,7 +19,7 @@ body {
   margin: 0 auto;
 }
 .content {
-  padding: 10px;
+  padding: 0 10px 0 10px;
 }
 .header-component {
   padding: 10px;
@@ -38,4 +37,11 @@ img.image123 {
   position: relative !important;
   height: unset !important;
   padding-top: 0;
+}
+p.intro {
+  font-style: italic;
+  font-weight: 500;
+}
+.title {
+  padding: 0 10px 0 10px;
 }

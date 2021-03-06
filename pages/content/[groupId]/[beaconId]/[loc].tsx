@@ -20,7 +20,13 @@ export async function getServerSideProps({ query }) {
   };
 }
 
-const InfoTemplate = ({ query, beaconInfo }): ReactElement => {
+const InfoTemplate = ({
+  query,
+  beaconInfo,
+}: {
+  query: any;
+  beaconInfo: BeaconInfo;
+}): ReactElement => {
   //TODO: proper typing
   const router = useRouter();
   const localization = query?.loc;
@@ -34,52 +40,48 @@ const InfoTemplate = ({ query, beaconInfo }): ReactElement => {
   if (!["fi", "en"].includes(localization)) {
     return <Error statusCode={404} />;
   }
-  beaconInfo = beaconInfo as BeaconInfo;
 
   return (
     <div className="main-page">
       <Header />
-      {beaconInfo.mediaUrl.pictureUrl && (
-        <div className="imageContainer">
-          <Image
-            layout="responsive"
-            src={beaconInfo.mediaUrl.pictureUrl}
-            alt="Image"
-            height="auto"
-            width="auto"
-            className="image123"
-          />
-        </div>
-      )}
+      <div className="title">
+        <h1>{beaconInfo.location[localization]}</h1>
+      </div>
+      <ImageComponent imageUrl={beaconInfo.mediaUrl.imageUrl} />
       <div className="content">
-        <h1>{beaconInfo.title[localization]}</h1>
-
-        <Description beaconInfo={beaconInfo} localization={localization} />
-
-        {beaconInfo.mediaUrl.videoUrl && (
-          <iframe
-            src={beaconInfo.mediaUrl.videoUrl}
-            title="Beaconinfo video"
-            width="100%"
-            height="250px"
-            allowFullScreen
-          />
-        )}
+        <Intro intro={beaconInfo.intro} localization={localization} />
+        <Description
+          description={beaconInfo.imageDescription}
+          localization={localization}
+        />
+        <VideoComponent videoUrl={beaconInfo.mediaUrl.videoUrl} />
+        <Description
+          description={beaconInfo.videoDescription}
+          localization={localization}
+        />
       </div>
     </div>
   );
 };
 
-const Description = ({ beaconInfo, localization }) => {
-  return (
-    <>
-      {beaconInfo.longDescription[localization].map(
-        (chapter: React.ReactNode) => (
-          <p>{chapter}</p>
-        )
-      )}
-    </>
-  );
+const Intro = ({
+  intro,
+  localization,
+}: {
+  intro?: any;
+  localization: string;
+}) => {
+  return <>{intro && <p className="intro">{intro[localization]}</p>}</>;
+};
+
+const Description = ({
+  description,
+  localization,
+}: {
+  description?: any;
+  localization: string;
+}) => {
+  return <>{description && <p>{description[localization]}</p>}</>;
 };
 
 const Header = () => {
@@ -92,6 +94,40 @@ const Header = () => {
         height="46px"
       />
     </div>
+  );
+};
+
+const ImageComponent = ({ imageUrl }: { imageUrl?: string }) => {
+  return (
+    <>
+      {imageUrl && (
+        <div className="imageContainer">
+          <Image
+            layout="responsive"
+            src={imageUrl}
+            alt="Image"
+            height="auto"
+            width="auto"
+            className="image123"
+          />
+        </div>
+      )}
+    </>
+  );
+};
+const VideoComponent = ({ videoUrl }: { videoUrl?: string }) => {
+  return (
+    <>
+      {videoUrl && (
+        <iframe
+          src={videoUrl}
+          title="Beaconinfo video"
+          width="100%"
+          height="250px"
+          allowFullScreen
+        />
+      )}
+    </>
   );
 };
 export default InfoTemplate;

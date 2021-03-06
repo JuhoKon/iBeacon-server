@@ -30,7 +30,7 @@ class SRedis {
     this.redisClient.SETEX(id, CACHE_TTL_SECONDS, JSON.stringify(value));
   }
 
-  public async getValue(id: string): Promise<Record<string, string>> {
+  public async getValue(id: string): Promise<unknown> {
     return new Promise((resolve, reject) => {
       this.redisClient.GET(id, (err: Error, reply: string) => {
         if (reply) {

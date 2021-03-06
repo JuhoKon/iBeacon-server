@@ -1,18 +1,30 @@
 export interface Tour {
   name: Locale;
   groupId: string;
-  beaconInfos: BeaconInfo[];
+  beaconInfos?: BeaconInfo[];
+  mapUrl?: string;
+  feedbackUrl?: string;
 }
-export interface BeaconInfo {
-  title: Locale;
-  id: number;
+export interface BeaconInfo extends ErrorType {
   beaconId: string;
-  conditions: number[];
-  longDescription: Locale;
-  shortDescription: Locale;
+  buttonRedirectUrl?: string;
+  conditions?: number[];
+  id: number;
+  imageDescription?: Locale;
+  intro?: Locale;
+  location?: Locale;
+  mediaUrl?: {
+    imageUrl?: string;
+    videoUrl?: string;
+  };
+  notification?: Locale;
+  videoDescription?: Locale;
 }
 
 interface Locale {
   en: string;
   fi: string;
+}
+interface ErrorType {
+  Error: any;
 }

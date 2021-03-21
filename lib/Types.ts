@@ -19,6 +19,7 @@ export interface BeaconInfo {
   };
   notification?: Locale;
   videoDescription?: Locale;
+  isExit?: boolean;
 }
 
 interface Locale {

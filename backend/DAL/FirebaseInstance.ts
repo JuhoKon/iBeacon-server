@@ -83,6 +83,7 @@ class SFirestore {
           location: beaconInfo.location,
           notification: beaconInfo.notification,
           conditions: beaconInfo.conditions,
+          isExit: beaconInfo.isExit,
         };
       }
     }

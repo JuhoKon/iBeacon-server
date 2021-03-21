@@ -16,22 +16,36 @@ import ErrorHandler from "../../lib/HandleError";
  *     HTTP/1.1 200 OK
  *{
  *  "result":{
- *      "shortDescription":{
- *         "fi":"Aula",
- *         "en":"Livingroom"
- *      },
- *      "title":{
- *         "en":"Livingroom",
- *         "fi":"Aula"
- *      },
- *      "conditions":[],
- *      "longDescription":{
- *         "fi":"Oppilaiden olohuone",
- *         "en":"Student's Livingroom"
- *      },
- *      "id":1,
- *      "beaconId":"789"
- *   }
+ *   "id": 1,
+ *   "imageDescription": {
+ *       "en": "Welcome to giants stairs! Donec mattis risus massa, ac tempor nisi suscipit et. Integer pharetra ac nisi eu congue. Fusce feugiat tortor at elit posuere, id scelerisque purus ultrices. In felis arcu, volutpat sit amet ligula nec, venenatis molestie quam. Duis ut pellentesque diam. Suspendisse potenti. Donec mattis nunc nec eros sodales, ut imperdiet ex tempus",
+ *       "fi": "Tervetuloa jättiläisten portaille! Donec mattis risus massa, ac tempor nisi suscipit et. Integer pharetra ac nisi eu congue. Fusce feugiat tortor at elit posuere, id scelerisque purus ultrices. In felis arcu, volutpat sit amet ligula nec, venenatis molestie quam. Duis ut pellentesque diam. Suspendisse potenti. Donec mattis nunc nec eros sodales, ut imperdiet ex tempus."
+ *   },
+ *   "buttonRedirectUrl": "https://www.imatra.fi/kylät-ja-kaupunginosat/mansikkala",
+ *   "conditions": [],
+ *   "notification": {
+ *       "fi": "Tässä ilmoitus",
+ *       "en": "This is notification"
+ *   },
+ *   "mediaUrl": {
+ *       "videoUrl": "https://www.youtube.com/embed/6LZy9gPwugk",
+ *       "imageUrl": "https://storage.googleapis.com/beaconinfomedia/images/638A9916.jpg"
+ *   },
+ *   "beaconId": "789",
+ *   "videoDescription": {
+ *       "en": "Video description. Nam sapien urna, pharetra vel diam a, tempor placerat massa. Phasellus laoreet pellentesque magna ac porta. Duis consequat lectus et tellus sagittis blandit. In aliquam malesuada est, nec volutpat neque varius id. Nulla id sem dui. Praesent lobortis massa rutrum leo consequat feugiat. Nulla egestas bibendum placerat. Aenean at congue justo. Praesent elementum consequat ipsum. Vestibulum et efficitur justo, et pellentesque risus.",
+ *       "fi": "Videon kuvausteksti. Nam sapien urna, pharetra vel diam a, tempor placerat massa. Phasellus laoreet pellentesque magna ac porta. Duis consequat lectus et tellus sagittis blandit. In aliquam malesuada est, nec volutpat neque varius id. Nulla id sem dui. Praesent lobortis massa rutrum leo consequat feugiat. Nulla egestas bibendum placerat. Aenean at congue justo. Praesent elementum consequat ipsum. Vestibulum et efficitur justo, et pellentesque risus."
+ *   },
+ *   "location": {
+ *       "en": "Giants stairs",
+ *       "fi": "Jättiläisten portaat"
+ *   },
+ *   "intro": {
+ *       "en": "Intro text for page. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur lobortis lectus vel sollicitudin.",
+ *       "fi": "Introteksti sivulle. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur lobortis lectus vel sollicitudin."
+ *   },
+ *   "isExit": false
+ *
  *}
  *
  */

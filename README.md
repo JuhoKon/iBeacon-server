@@ -61,7 +61,7 @@ cd scripts/ && ./build.sh
 cd scripts/ && ./deploy.sh
 ```
 
-You can edit the scripts if you need to change configurations. The build script builds a container image, loads the image to the Container Registry, and the deploy script then deploys the container image to Cloud Run, [instructions.](https://cloud.google.com/run/docs/quickstarts/build-and-deploy)
+You can edit the scripts if you need to change configurations. The build script builds a container image (see Dockerfile), loads the image to the Container Registry, and the deploy script then deploys the container image to Cloud Run, [instructions.](https://cloud.google.com/run/docs/quickstarts/build-and-deploy)
 
 Once the application is running in the Google Cloud environment, it uses the default service account to interact and call other Google Cloud APIs. In our case, it uses the Firestore DB and Memorystore Redis. You might need to change the Service Account's access rights.
 

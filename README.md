@@ -16,7 +16,13 @@ We are using the GCP's client library for Firestore. To interact with the databa
 
 After you have Redis running and GCP client authentication set up, you're ready to start developing the application.
 
-First, run the development server:
+First, install the needed packages:
+
+```bash
+yarn install
+```
+
+Then, run the development server:
 
 ```bash
 yarn dev

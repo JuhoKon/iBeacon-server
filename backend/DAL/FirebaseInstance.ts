@@ -93,7 +93,9 @@ class SFirestore {
           isExit: beaconInfo.isExit,
         };
       });
-      return beaconInfo;
+      if (beaconInfo && beaconInfo.length > 0) {
+        return beaconInfo;
+      }
     }
     throw Error(NOT_FOUND);
   }

@@ -19,14 +19,14 @@ export const getLocalizations = async () => {
 };
 
 export const getTours = async () => {
-  /*   const resultsFromCache = await RedisInstance.getValue(TOURS);
+  const resultsFromCache = await RedisInstance.getValue(TOURS);
   if (resultsFromCache) {
     console.log(`Returning cache value for ${TOURS}`);
     return resultsFromCache;
-  } */
+  }
   console.log("Loading from DB.");
   const results = await FirebaseInstance.getTours();
-  /*   RedisInstance.setKey(TOURS, results); */
+  RedisInstance.setKey(TOURS, results);
   return results;
 };
 
@@ -35,29 +35,29 @@ export const getBeaconInfoFull = async (
   beaconInfoId: string
 ): Promise<BeaconInfo> => {
   const cacheKey = `g:${groupId}b:${beaconInfoId}:full`;
-  /*   const resultsFromCache = await RedisInstance.getValue(cacheKey);
+  const resultsFromCache = await RedisInstance.getValue(cacheKey);
   if (resultsFromCache) {
     console.log(`Returning cache value for ${cacheKey}`);
     return <BeaconInfo>resultsFromCache;
-  } */
+  }
   console.log("Loading from DB.");
   const results = await FirebaseInstance.getBeaconInfoFull(
     groupId,
     beaconInfoId
   );
-  /*   RedisInstance.setKey(cacheKey, results); */
+  RedisInstance.setKey(cacheKey, results);
   return results;
 };
 
 export const getBeaconInfoShort = async (groupId: string, beaconId: string) => {
   const cacheKey = `g:${groupId}b:${beaconId}:short`;
-  /*   const resultsFromCache = await RedisInstance.getValue(cacheKey);
+  const resultsFromCache = await RedisInstance.getValue(cacheKey);
   if (resultsFromCache) {
     console.log(`Returning cache value for ${cacheKey}`);
     return resultsFromCache;
-  } */
+  }
   console.log("Loading from DB.");
   const results = await FirebaseInstance.getBeaconInfoShort(groupId, beaconId);
-  /*   RedisInstance.setKey(cacheKey, results); */
+  RedisInstance.setKey(cacheKey, results);
   return results;
 };

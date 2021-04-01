@@ -91,7 +91,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "beaconId",
+            "field": "beaconInfoId",
             "description": "<p>BeaconInfoID</p>"
           }
         ]

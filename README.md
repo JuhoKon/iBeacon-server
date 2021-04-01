@@ -48,7 +48,15 @@ Data fetching is done server-side on the page.
 
 ## Deployment
 
-Just run the following commands:
+The deployment scripts work using the `gloud command-line tool`, you need ot have it downloaded and installed, and configured on the account that you want to deploy the project to.
+
+I myself, used this command to configure the account and choose the GCP-project:
+
+```bash
+gcloud init
+```
+
+After configuring `gcloud`-CLI tool, the deploying itself works by running the following commands:
 
 ```bash
 yarn deploy
@@ -81,4 +89,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-

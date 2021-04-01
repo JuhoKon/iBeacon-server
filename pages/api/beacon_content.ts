@@ -8,7 +8,7 @@ import ErrorHandler from "../../lib/HandleError";
  * @apiGroup Beacon_content
  *
  * @apiParam {String} groupId Group ID
- * @apiParam {String} beaconId BeaconInfoID
+ * @apiParam {String} beaconInfoId BeaconInfoID
  * @apiExample {curl} Example usage:
  *    curl -i http://localhost:8080/api/beacon_content?groupId=3&beaconInfoId=1
  * @apiSuccessExample Success-Response:

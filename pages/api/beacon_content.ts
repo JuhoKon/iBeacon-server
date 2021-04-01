@@ -3,14 +3,14 @@ import { CORS } from "../../backend/middleware/cors";
 import ErrorHandler from "../../lib/HandleError";
 
 /**
- * @api {get}/api/beacon_content Request Beacon information
+ * @api {get}/api/beacon_content Request Beacon content
  * @apiName get beaconContent
- * @apiGroup Beacon_Info
+ * @apiGroup Beacon_content
  *
  * @apiParam {String} groupId Group ID
  * @apiParam {String} beaconId BeaconInfoID
  * @apiExample {curl} Example usage:
- *    curl -i http://localhost:8080/api/beacon_info?groupId=3&beaconInfoId=1
+ *    curl -i http://localhost:8080/api/beacon_content?groupId=3&beaconInfoId=1
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *{

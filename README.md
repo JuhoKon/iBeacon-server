@@ -30,7 +30,7 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the content page by modifying `pages/content/[groupId]/[beaconId]/[loc]`. The page auto-updates as you edit and save the file.
+You can start editing the content page by modifying `pages/content/[groupId]/[beaconInfoId]/[loc]`. The page auto-updates as you edit and save the file.
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/](http://localhost:3000/api/). This endpoint can be edited in `pages/api/*.ts`.
 
@@ -42,9 +42,9 @@ Note that although backend logic exists under the `backend` - folder, the `route
 
 ## Pages
 
-Pages are found in `pages/content[groupId]/[beaconId]/[loc].tsx`. For example for group 1 and beacon 12, the page would be: [http://localhost:3000/content/1/12/en] (English) [http://localhost:3000/content/1/12/fi] (Finnish)
+The application uses dynamic routing. Pages are found in `pages/content[groupId]/[beaconInfoId]/[loc].tsx`. For example for group 1 and beaconInfoId 12, the page would be: [http://localhost:3000/content/1/12/en] (English) [http://localhost:3000/content/1/12/fi] (Finnish). The routing and data fetching are done by groupdId and beaconInfoId, beaconInfo-objects exist inside the Tour-object. See database documentation for more information on how the DB schema and logic works.
 
-Data fetching is done server-side on the page.
+Data fetching itself is done server-side on the page.
 
 ## Deployment
 

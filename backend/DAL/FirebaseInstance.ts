@@ -34,6 +34,9 @@ class SFirestore {
       const document = doc.data() as Tour;
       const beaconInfos = document["beaconInfos"];
       const beaconInfoIds = beaconInfos.map((beaconInfo: BeaconInfo) => {
+        return beaconInfo.id;
+      });
+      const beaconIds = beaconInfos.map((beaconInfo: BeaconInfo) => {
         return beaconInfo.beaconId;
       });
       return {
@@ -41,14 +44,16 @@ class SFirestore {
         groupId: document.groupId,
         mapUrl: document.mapUrl,
         feedbackUrl: document.feedbackUrl,
+        beaconIds: beaconIds,
         beaconInfoIds: beaconInfoIds,
+        introVideoUrl: document.introVideoUrl,
       };
     });
     return data;
   }
   public async getBeaconInfoFull(
     groupId: string,
-    beaconId: string
+    beaconInfoId: string
   ): Promise<BeaconInfo> {
     const snapshot = await this.firestore
       .collection(TOURS)
@@ -57,8 +62,9 @@ class SFirestore {
     if (snapshot.docs[0]) {
       const document = snapshot.docs[0].data() as Tour;
       const beaconInfo = document.beaconInfos.find(
-        (beaconInfo) => beaconInfo.beaconId === beaconId
+        (beaconInfo) => beaconInfo.id.toString() === beaconInfoId
       );
+
       if (beaconInfo) {
         return beaconInfo;
       }
@@ -75,21 +81,21 @@ class SFirestore {
       .get();
     if (snapshot.docs[0]) {
       const document = snapshot.docs[0].data() as Tour;
-      const beaconInfo = document.beaconInfos.find(
+      const beaconInfos = document.beaconInfos.filter(
         (beaconInfo) => beaconInfo.beaconId === beaconId
       );
-      if (beaconInfo) {
+      const beaconInfo = beaconInfos.map((beaconInfo) => {
         return {
+          id: beaconInfo.id,
           location: beaconInfo.location,
           notification: beaconInfo.notification,
           conditions: beaconInfo.conditions,
           isExit: beaconInfo.isExit,
         };
-      }
+      });
+      return beaconInfo;
     }
     throw Error(NOT_FOUND);
   }
-  // setup listener for changes in documents by collections
-  // also can update redis-keys for them
 }
 export default SFirestore;

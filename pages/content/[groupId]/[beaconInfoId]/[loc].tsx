@@ -8,15 +8,15 @@ import Loading from "../../../../components/Loading";
 import * as Controller from "../../../../backend/controllers/controller";
 
 export async function getServerSideProps({ query }) {
-  const beaconId = Array.isArray(query.beaconId)
-    ? query.beaconId[0]
-    : query.beaconId;
+  const beaconInfoId = Array.isArray(query.beaconInfoId)
+    ? query.beaconInfoId[0]
+    : query.beaconInfoId;
   const groupId = Array.isArray(query.groupId)
     ? query.groupId[0]
     : query.groupId;
   let beaconInfo = await Controller.getBeaconInfoFull(
     groupId,
-    beaconId
+    beaconInfoId
   ).catch((e) => {});
   if (!beaconInfo) {
     beaconInfo = null;

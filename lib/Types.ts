@@ -4,6 +4,7 @@ export interface Tour {
   beaconInfos?: BeaconInfo[];
   mapUrl?: string;
   feedbackUrl?: string;
+  introVideoUrl?: string;
 }
 export interface BeaconInfo {
   beaconId: string;

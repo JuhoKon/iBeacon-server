@@ -55,19 +55,27 @@ export default async function handler(req, res) {
   if (req.method === "GET") {
     // Process a GET request
     const {
-      query: { groupId, beaconId, template },
+      query: { groupId, beaconId, beaconInfoId },
     } = req;
-    if (!groupId || !beaconId) {
+    if (!groupId || (!beaconId && !beaconInfoId)) {
       return res
         .status(400)
         .json({ Error: "All parameters were not provided." });
     }
-    const getBeaconInfo =
-      template == 1
-        ? Controller.getBeaconInfoFull
-        : Controller.getBeaconInfoShort;
+    let getBeaconInfo: any;
+    let id: string;
+
+    if (groupId && beaconId) {
+      getBeaconInfo = Controller.getBeaconInfoShort;
+      id = beaconId;
+    }
+    if (groupId && beaconInfoId) {
+      getBeaconInfo = Controller.getBeaconInfoFull;
+      id = beaconInfoId;
+    }
+
     try {
-      const result = await getBeaconInfo(groupId, beaconId);
+      const result = await getBeaconInfo(groupId, id);
       return res.status(200).json({
         result,
       });

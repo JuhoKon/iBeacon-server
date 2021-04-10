@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useRouter } from "next/dist/client/router";
 import React, { ReactElement } from "react";
 
@@ -6,6 +5,11 @@ import Error from "next/error";
 import { BeaconInfo } from "../../../../lib/Types";
 import Loading from "../../../../components/Loading";
 import * as Controller from "../../../../backend/controllers/controller";
+import Header from "../../../../components/Header";
+import ImageComponent from "../../../../components/Image";
+import Intro from "../../../../components/Intro";
+import Description from "../../../../components/Description";
+import VideoComponent from "../../../../components/Video";
 
 export async function getServerSideProps({ query }) {
   const beaconInfoId = Array.isArray(query.beaconInfoId)
@@ -18,6 +22,8 @@ export async function getServerSideProps({ query }) {
     groupId,
     beaconInfoId
   ).catch((e) => {});
+  // In case of error, set beaconInfo to null
+  // And handle error by showing 404-page in the template
   if (!beaconInfo) {
     beaconInfo = null;
   }
@@ -71,70 +77,4 @@ const InfoTemplate = ({
   );
 };
 
-const Intro = ({
-  intro,
-  localization,
-}: {
-  intro?: any;
-  localization: string;
-}) => {
-  return <>{intro && <p className="intro">{intro[localization]}</p>}</>;
-};
-
-const Description = ({
-  description,
-  localization,
-}: {
-  description?: any;
-  localization: string;
-}) => {
-  return <>{description && <p>{description[localization]}</p>}</>;
-};
-
-const Header = () => {
-  return (
-    <div className="header-component">
-      <Image
-        src="https://storage.googleapis.com/imatra_media/images/imatra_tunnus.png"
-        alt="Image"
-        width="238px"
-        height="46px"
-      />
-    </div>
-  );
-};
-
-const ImageComponent = ({ imageUrl }: { imageUrl?: string }) => {
-  return (
-    <>
-      {imageUrl && (
-        <div className="imageContainer">
-          <Image
-            layout="responsive"
-            src={imageUrl}
-            alt="Image"
-            height="auto"
-            width="auto"
-            className="image123"
-          />
-        </div>
-      )}
-    </>
-  );
-};
-const VideoComponent = ({ videoUrl }: { videoUrl?: string }) => {
-  return (
-    <>
-      {videoUrl && (
-        <iframe
-          src={videoUrl}
-          title="Beaconinfo video"
-          width="100%"
-          height="250px"
-          allowFullScreen
-        />
-      )}
-    </>
-  );
-};
 export default InfoTemplate;

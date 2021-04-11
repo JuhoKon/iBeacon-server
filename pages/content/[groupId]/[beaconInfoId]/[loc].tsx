@@ -39,7 +39,7 @@ const InfoTemplate = ({
   beaconInfo,
 }: {
   query: any;
-  beaconInfo: BeaconInfo;
+  beaconInfo: any;
 }): ReactElement => {
   const router = useRouter();
   const localization = query?.loc;
@@ -62,12 +62,27 @@ const InfoTemplate = ({
       <div className="title">
         <h1>{beaconInfo.location && beaconInfo.location[localization]}</h1>
       </div>
-      <ImageComponent imageUrl={beaconInfo.mediaUrl.imageUrl} />
+      {beaconInfo.mediaUrl && beaconInfo.mediaUrl.imageUrl && (
+        <ImageComponent imageUrl={beaconInfo.mediaUrl.imageUrl} />
+      )}
       <div className="content">
-        <Intro intro={beaconInfo.intro[localization]} />
-        <Description description={beaconInfo.imageDescription[localization]} />
-        <VideoComponent videoUrl={beaconInfo.mediaUrl.videoUrl} />
-        <Description description={beaconInfo.videoDescription[localization]} />
+        {beaconInfo.intro && <Intro intro={beaconInfo.intro[localization]} />}
+
+        {beaconInfo.imageDescription && (
+          <Description
+            description={beaconInfo.imageDescription[localization]}
+          />
+        )}
+
+        {beaconInfo.mediaUrl && beaconInfo.mediaUrl.videoUrl && (
+          <VideoComponent videoUrl={beaconInfo.mediaUrl.videoUrl} />
+        )}
+
+        {beaconInfo.videoDescription && (
+          <Description
+            description={beaconInfo.videoDescription[localization]}
+          />
+        )}
       </div>
     </div>
   );

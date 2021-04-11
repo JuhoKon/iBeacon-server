@@ -5,13 +5,39 @@ const AboutPage = (): ReactElement => {
   return (
     <div className="main-page">
       <Header />
-      <div className="title">
-        <h1>Meistä</h1>
-      </div>
       <div className="content">
-        <p>iTour-sovellus luotiin kurssityönä keväällä 2021 LUT: lla.</p>
-        <h2>Ketä me olemme?</h2>
-        <p> Olemme LUT:n opiskelijoita...</p>
+        <h2>Historia</h2>
+        <p>
+          iTour-sovellus on luotu keväällä 2021 LUT-yliopiston kurssityönä.
+          iTour-projekti käsittää usemman kokonaisuuden: iOS ja Android
+          -sovellukset, backend ja tietokantaratkaisut. Sovelluksen pohjalta
+          julkaistiin myös eTour, joka on lisensoitu niin, että kuka tahansa voi
+          jatkokehittää tätä kokonaisuutta omiin tarpeisiinsa.
+        </p>
+        <h2>Kehittäjät </h2>
+        <p>
+          Tämän ohjelmistoprojektin kehitystiimi koostui tietotekniikan
+          maisteriopiskelijoista. <strong>Jotain lisää meistä?</strong> Jos
+          jatkokehität ratkaisuja eTour:in pohjalta, toivomme, että otat meihin
+          yhteyttä ja jaat kokemuksia, että minkälaisia ratkaisuja ja uusia
+          tuotteita eTourin pohjalta on syntynyt.
+        </p>
+        <div>
+          <strong>Tiimi:</strong>
+          <p>etour@mail.com</p>
+          <ul>
+            <li>Juho Kontiainen</li>
+            <li>Topi Penttilä</li>
+            <li>Piret Niva</li>
+            <li>Riina Purovesi</li>
+            <li>Mahyar Mohammadi</li>
+            <li>Loan Ngo Thi Ngoc</li>
+          </ul>
+          <strong>Etour:</strong>
+          <ul>
+            <li>Linkki eTour/GitHub</li>
+          </ul>
+        </div>
       </div>
     </div>
   );

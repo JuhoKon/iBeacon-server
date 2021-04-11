@@ -7,7 +7,7 @@ const LandingPage = (): ReactElement => {
     <div className="main-page">
       <Header />
       <div className="title">
-        <h1>Hups!</h1>
+        <h1>Tule ja koe Mansikkalan koulu!</h1>
       </div>
       <ImageComponent
         imageUrl={

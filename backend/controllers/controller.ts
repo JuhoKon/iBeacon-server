@@ -30,6 +30,20 @@ export const getTours = async () => {
   return results;
 };
 
+export const getBeaconInfoShort = async (groupId: string, beaconId: string) => {
+  const cacheKey = `g:${groupId}b:${beaconId}:short`;
+  const resultsFromCache = await RedisInstance.getValue(cacheKey);
+  if (resultsFromCache) {
+    console.log(`Returning cache value for ${cacheKey}`);
+    return resultsFromCache;
+  }
+  console.log("Loading from DB.");
+  const results = await FirebaseInstance.getBeaconInfoShort(groupId, beaconId);
+  RedisInstance.setKey(cacheKey, results);
+  return results;
+};
+
+// Not used in the routes directly, called from Content Page as ServerSideProps
 export const getBeaconInfoFull = async (
   groupId: string,
   beaconInfoId: string
@@ -45,19 +59,6 @@ export const getBeaconInfoFull = async (
     groupId,
     beaconInfoId
   );
-  RedisInstance.setKey(cacheKey, results);
-  return results;
-};
-
-export const getBeaconInfoShort = async (groupId: string, beaconId: string) => {
-  const cacheKey = `g:${groupId}b:${beaconId}:short`;
-  const resultsFromCache = await RedisInstance.getValue(cacheKey);
-  if (resultsFromCache) {
-    console.log(`Returning cache value for ${cacheKey}`);
-    return resultsFromCache;
-  }
-  console.log("Loading from DB.");
-  const results = await FirebaseInstance.getBeaconInfoShort(groupId, beaconId);
   RedisInstance.setKey(cacheKey, results);
   return results;
 };

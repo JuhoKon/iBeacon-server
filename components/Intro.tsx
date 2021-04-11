@@ -1,11 +1,5 @@
-const Intro = ({
-  intro,
-  localization,
-}: {
-  intro?: any;
-  localization: string;
-}) => {
-  return <>{intro && <p className="intro">{intro[localization]}</p>}</>;
+const Intro = ({ intro }: { intro?: string }) => {
+  return <>{intro && <p className="intro">{intro}</p>}</>;
 };
 
 export default Intro;

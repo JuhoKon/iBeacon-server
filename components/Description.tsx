@@ -1,11 +1,5 @@
-const Description = ({
-  description,
-  localization,
-}: {
-  description?: any;
-  localization: string;
-}) => {
-  return <>{description && <p>{description[localization]}</p>}</>;
+const Description = ({ description }: { description?: string }) => {
+  return <>{description && <p>{description}</p>}</>;
 };
 
 export default Description;

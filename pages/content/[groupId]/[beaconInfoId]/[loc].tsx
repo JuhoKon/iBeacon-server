@@ -21,7 +21,9 @@ export async function getServerSideProps({ query }) {
   let beaconInfo = await Controller.getBeaconInfoFull(
     groupId,
     beaconInfoId
-  ).catch((e) => {});
+  ).catch((e) => {
+    // console.log(e);
+  });
   // In case of error, set beaconInfo to null
   // And handle error by showing 404-page in the template
   if (!beaconInfo) {
@@ -62,16 +64,10 @@ const InfoTemplate = ({
       </div>
       <ImageComponent imageUrl={beaconInfo.mediaUrl.imageUrl} />
       <div className="content">
-        <Intro intro={beaconInfo.intro} localization={localization} />
-        <Description
-          description={beaconInfo.imageDescription}
-          localization={localization}
-        />
+        <Intro intro={beaconInfo.intro[localization]} />
+        <Description description={beaconInfo.imageDescription[localization]} />
         <VideoComponent videoUrl={beaconInfo.mediaUrl.videoUrl} />
-        <Description
-          description={beaconInfo.videoDescription}
-          localization={localization}
-        />
+        <Description description={beaconInfo.videoDescription[localization]} />
       </div>
     </div>
   );

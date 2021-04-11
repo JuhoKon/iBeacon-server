@@ -35,17 +35,17 @@ export const getBeaconInfoFull = async (
   beaconInfoId: string
 ): Promise<BeaconInfo> => {
   const cacheKey = `g:${groupId}b:${beaconInfoId}:full`;
-  const resultsFromCache = await RedisInstance.getValue(cacheKey);
+  /*   const resultsFromCache = await RedisInstance.getValue(cacheKey);
   if (resultsFromCache) {
     console.log(`Returning cache value for ${cacheKey}`);
     return <BeaconInfo>resultsFromCache;
-  }
+  } */
   console.log("Loading from DB.");
   const results = await FirebaseInstance.getBeaconInfoFull(
     groupId,
     beaconInfoId
   );
-  RedisInstance.setKey(cacheKey, results);
+  /*   RedisInstance.setKey(cacheKey, results); */
   return results;
 };
 

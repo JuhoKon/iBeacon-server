@@ -39,7 +39,7 @@ const InfoTemplate = ({
   beaconInfo,
 }: {
   query: any;
-  beaconInfo: any;
+  beaconInfo: BeaconInfo;
 }): ReactElement => {
   const router = useRouter();
   const localization = query?.loc;

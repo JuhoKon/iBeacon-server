@@ -4,6 +4,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 In the iBeacon project, NextJS is used as the backend to provide API endpoints for the mobile client, and as a frontend for providing a few static pages, and a dynamic web template.
 
+![architecture](https://user-images.githubusercontent.com/37773658/114718159-69977980-9d3e-11eb-9791-df560c21f4c1.PNG)
+
 ### API Endpoints
 
 See this: [Built with apidocs](https://juhokon.github.io/NextJS-Test/apidoc/index.html).

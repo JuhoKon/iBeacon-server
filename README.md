@@ -1,3 +1,5 @@
+# iBeacon | NextJS Backend & Frontend
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Architecture
@@ -6,11 +8,15 @@ In the iBeacon project, NextJS is used as the backend to provide API endpoints f
 
 ![architecture](https://user-images.githubusercontent.com/37773658/114718159-69977980-9d3e-11eb-9791-df560c21f4c1.PNG)
 
-### API Endpoints
+The solution uses Firestore as the DB, as well as Redis for caching the requests (BE sets keys with a TTL, when keys expire, BE updates the keys in the cache).
+
+### API Endpoint documentation
 
 See this: [Built with apidocs](https://juhokon.github.io/NextJS-Test/apidoc/index.html).
 
-## Development | Redis
+# Development
+
+## Redis
 
 In order to develop the application locally you need to have `Redis` running on your system! The host and port for development is configured on the `.env` - file.
 
@@ -58,7 +64,7 @@ About and landing pages are static, and are found under `pages/` folder (/about 
 
 Accessing them is straightforward: [http://localhost:3000/landing/fi] [http://localhost:3000/about/en].
 
-## Deployment
+# Deployment
 
 The deployment scripts work using the `gloud command-line tool`, you need to have it downloaded and installed, and configured on the account that you want to deploy the project to.
 
@@ -81,17 +87,25 @@ cd scripts/ && ./build.sh
 cd scripts/ && ./deploy.sh
 ```
 
-You can edit the scripts if you need to change configurations. The build script builds a container image (see Dockerfile), loads the image to the Container Registry, and the deploy script then deploys the container image to Cloud Run, [instructions.](https://cloud.google.com/run/docs/quickstarts/build-and-deploy)
+You can edit the scripts if you need to change configurations (such as REDIS IP change). The build script builds a container image (see the `Dockerfile`), loads the image to the Container Registry, and the deploy script then deploys the container image to Cloud Run, [instructions.](https://cloud.google.com/run/docs/quickstarts/build-and-deploy)
 
 Once the application is running in the Google Cloud environment, it uses the default service account to interact and call other Google Cloud APIs. In our case, it uses the Firestore DB and Memorystore Redis. You might need to change the Service Account's access rights.
 
 To use memorystore (Redis) on the Google Cloud, we need to configure Serverless VPC Access (`deploy.sh` - file has the configuration for `Redis host` and `Redis port`). Cloud Run must also be in the same region as the Redis instance. For instructions see: [instructions.](https://cloud.google.com/memorystore/docs/redis/connect-redis-instance-cloud-run)
+
+![gcloudbuild](https://user-images.githubusercontent.com/37773658/114723953-c6496300-9d43-11eb-9beb-bfc633c7fe53.PNG)
+`Figure of the build process in GCP.`
 
 Also to build apiDoc, you need to have apiDoc installed globally.
 
 ```bash
  npm install -g apidoc
 ```
+
+## GCP Environment figure
+
+![gcloudarch](https://user-images.githubusercontent.com/37773658/114723913-ba5da100-9d43-11eb-94a1-085b44960316.PNG)
+`Figure of the Google Cloud Environment`
 
 ## Learn More
 

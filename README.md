@@ -1,12 +1,16 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## API Documentation
+## Architecture
 
-[Built with apidocs](https://juhokon.github.io/NextJS-Test/apidoc/index.html)
+In the iBeacon project, NextJS is used as the backend to provide API endpoints for the mobile client, and as a frontend for providing a few static pages, and a dynamic web template.
+
+### API Endpoints
+
+See this: [Built with apidocs](https://juhokon.github.io/NextJS-Test/apidoc/index.html).
 
 ## Development | Redis
 
-You need to have `Redis` running on your system! The host and port for development is configured on the `.env` - file.
+In order to develop the application locally you need to have `Redis` running on your system! The host and port for development is configured on the `.env` - file.
 
 ## Database
 
@@ -42,13 +46,19 @@ Note that although backend logic exists under the `backend` - folder, the `route
 
 ## Pages
 
-The application uses dynamic routing. Pages are found in `pages/content[groupId]/[beaconInfoId]/[loc].tsx`. For example for group 1 and beaconInfoId 12, the page would be: [http://localhost:3000/content/1/12/en] (English) [http://localhost:3000/content/1/12/fi] (Finnish). The routing and data fetching are done by groupdId and beaconInfoId, beaconInfo-objects exist inside the Tour-object. See database documentation for more information on how the DB schema and logic works.
+The application uses dynamic routing. Pages are found in `pages/content[groupId]/[beaconInfoId]/[loc].tsx`. For example for group 1 and beaconInfoId 12, the page would be: [http://localhost:3000/content/1/12/en](English) [http://localhost:3000/content/1/12/fi](Finnish). The routing and data fetching are done by groupdId and beaconInfoId, beaconInfo-objects exist inside the Tour-object. See database documentation for more information on how the DB schema and logic works.
 
 Data fetching itself is done server-side on the page.
 
+### Static pages
+
+About and landing pages are static, and are found under `pages/` folder (/about and /landing). En and fi - localizations are currently available for them.
+
+Accessing them is straightforward: [http://localhost:3000/landing/fi] [http://localhost:3000/about/en].
+
 ## Deployment
 
-The deployment scripts work using the `gloud command-line tool`, you need ot have it downloaded and installed, and configured on the account that you want to deploy the project to.
+The deployment scripts work using the `gloud command-line tool`, you need to have it downloaded and installed, and configured on the account that you want to deploy the project to.
 
 I myself, used this command to configure the account and choose the GCP-project:
 

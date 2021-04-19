@@ -5,9 +5,8 @@ REDISPORT=6379
 REGION=europe-west3
 PROJECTID=$(gcloud config get-value project)
 
-echo Building project...
-cd ..
 echo Deploying project...
+cd ..
 gcloud run deploy \
   --image gcr.io/$PROJECTID/nextjs \
   --platform managed \

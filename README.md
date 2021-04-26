@@ -53,9 +53,9 @@ Note that although backend logic exists under the `backend` - folder, the `route
 
 ## Pages
 
-The application uses dynamic routing. Pages are found in `pages/content[groupId]/[beaconInfoId]/[loc].tsx`. For example for group 1 and beaconInfoId 12, the page would be: [http://localhost:3000/content/1/12/en](English) [http://localhost:3000/content/1/12/fi](Finnish). The routing and data fetching are done by groupdId and beaconInfoId, beaconInfo-objects exist inside the Tour-object. See database documentation for more information on how the DB schema and logic works.
+The application uses dynamic routing. Pages are found in `pages/content[groupId]/[beaconInfoId]/[loc].tsx`. For example for group 1 and beaconInfoId 12, the page would be: [http://localhost:3000/content/1/12/en](English) [http://localhost:3000/content/1/12/fi](Finnish). 
 
-The routing and data fetching are done by groupdId and beaconInfoId, beaconInfo-objects exist inside the Tour-object. Upon request, the React component first fetches data from the DB/cache based on the request query (/content/X/Y/en), then populates the template, NextJS renders the HTML Server-Side, and returns the rendered HTML to the requester.  
+The routing and data fetching are done by groupdId and beaconInfoId, beaconInfo-objects exist inside the Tour-object. Upon request, the React component first fetches data from the DB/cache based on the request query (/content/X/Y/en), then populates the template, NextJS renders the HTML Server-Side, and returns the rendered HTML to the requester. See database documentation for more information on how the DB schema and logic works.
 
 ### Static pages
 

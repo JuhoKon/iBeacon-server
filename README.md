@@ -99,10 +99,6 @@ cd scripts/ && ./deploy.sh
 
 You can edit the scripts if you need to change configurations (such as REDIS IP change). The build script builds a container image (see the `Dockerfile`), loads the image to the Container Registry, and the deploy script then deploys the container image to Cloud Run, [instructions.](https://cloud.google.com/run/docs/quickstarts/build-and-deploy)
 
-Once the application is running in the Google Cloud environment, it uses the default service account to interact and call other Google Cloud APIs. In our case, it uses the Firestore DB and Memorystore Redis. You might need to change the Service Account's access rights.
-
-To use memorystore (Redis) on the Google Cloud, we need to configure Serverless VPC Access (`deploy.sh` - file has the configuration for `Redis host` and `Redis port`). Cloud Run must also be in the same region as the Redis instance. For instructions see: [instructions.](https://cloud.google.com/memorystore/docs/redis/connect-redis-instance-cloud-run)
-
 ![gcloudbuild](https://user-images.githubusercontent.com/37773658/114723953-c6496300-9d43-11eb-9beb-bfc633c7fe53.PNG)
 `Figure of the build process in GCP.`
 

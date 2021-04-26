@@ -64,6 +64,10 @@ About and landing pages are static, and are found under `pages/` folder (/about 
 
 Accessing them is straightforward: [http://localhost:3000/landing/fi] [http://localhost:3000/about/en].
 
+## Cloud Functions
+
+We have one Cloud Function deployed to the GCP (found under /functions - folder along with deployment scripts). It is used to reset all cache keys, as the TTL should be set to a high value, so we are easing off the load from the DB.
+
 # Deployment
 
 The deployment scripts work using the `gloud command-line tool`, you need to have it downloaded and installed, and configured on the account that you want to deploy the project to.
@@ -106,6 +110,22 @@ Also to build apiDoc, you need to have apiDoc installed globally.
 
 ![gcloudarch](https://user-images.githubusercontent.com/37773658/114723913-ba5da100-9d43-11eb-94a1-085b44960316.PNG)
 `Figure of the Google Cloud Environment`
+
+Now the NextJS application should be running in the Google Cloud Platform. The GCP-environment uses the following services: 
+
+* Firestore 
+* * Database
+* Memorystore Redis
+*  * Cache
+*  Cloud Storage
+*  * For storing artefacts and builds (from Cloud Run) 
+*  * For storing images for Firestore (DB objects contains links to our Cloud Storage) 
+*  Serverless VPC Access Connector 
+*  * Enables Cloud Run to connect to our VPC Network (where Memorystore Redis exists) 
+*  Cloud Functions 
+*  * Provides an endpoint for resetting the Cache keys (called forceUpdate in the GCP) 
+*  * Files are found inside the BE-repo under /functions - folder along with deployment scripts. 
+
 
 ## Learn More
 

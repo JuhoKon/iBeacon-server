@@ -66,7 +66,7 @@ Accessing them is straightforward: [http://localhost:3000/landing/fi] [http://lo
 
 ## Cloud Functions
 
-We have one Cloud Function deployed to the GCP (found under /functions - folder along with deployment scripts). It is used to reset all cache keys, as the TTL should be set to a high value, so we are easing off the load from the DB.
+We have one Cloud Function deployed to the GCP (found under /gfunctions - folder along with deployment scripts). It is used to reset all cache keys, as the TTL should be set to a high value, so we are easing off the load from the DB.
 
 # Deployment
 
@@ -124,7 +124,7 @@ Now the NextJS application should be running in the Google Cloud Platform. The G
 *  * Enables Cloud Run to connect to our VPC Network (where Memorystore Redis exists) 
 *  Cloud Functions 
 *  * Provides an endpoint for resetting the Cache keys (called forceUpdate in the GCP) 
-*  * Files are found inside the BE-repo under /functions - folder along with deployment scripts. 
+*  * Files are found inside the BE-repo under /gfunctions - folder along with deployment scripts. 
 
 
 ## Learn More

@@ -18,11 +18,10 @@ const AboutPage = (): ReactElement => {
         <h2>Development Team</h2>
         <p>
           The development team for this software project consisted of master’s
-          students in information technology.
-          <strong> Something more about us?</strong> If you further develop
-          solutions based on eTour, we hope that you will contact us and share
-          your experiences, what kind of solutions and new products have been
-          created based on eTour.
+          students in information technology. If you further develop solutions
+          based on eTour, we hope that you will contact us and share your
+          experiences, what kind of solutions and new products have been created
+          based on eTour.
         </p>
         <div>
           <strong>Team:</strong>
@@ -33,7 +32,7 @@ const AboutPage = (): ReactElement => {
             <li>Piret Niva</li>
             <li>Riina Purovesi</li>
             <li>Mahyar Mohammadi</li>
-            <li>Loan Ngo Thi Ngoc</li>
+            <li>Loan Ngoc</li>
           </ul>
           <strong>Etour:</strong>
           <ul>

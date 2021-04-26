@@ -17,10 +17,10 @@ const AboutPage = (): ReactElement => {
         <h2>Kehittäjät </h2>
         <p>
           Tämän ohjelmistoprojektin kehitystiimi koostui tietotekniikan
-          maisteriopiskelijoista. <strong>Jotain lisää meistä?</strong> Jos
-          jatkokehität ratkaisuja eTour:in pohjalta, toivomme, että otat meihin
-          yhteyttä ja jaat kokemuksia, että minkälaisia ratkaisuja ja uusia
-          tuotteita eTourin pohjalta on syntynyt.
+          maisteriopiskelijoista. Jos jatkokehität ratkaisuja eTour:in pohjalta,
+          toivomme, että otat meihin yhteyttä ja jaat kokemuksia, että
+          minkälaisia ratkaisuja ja uusia tuotteita eTourin pohjalta on
+          syntynyt.
         </p>
         <div>
           <strong>Tiimi:</strong>
@@ -31,7 +31,7 @@ const AboutPage = (): ReactElement => {
             <li>Piret Niva</li>
             <li>Riina Purovesi</li>
             <li>Mahyar Mohammadi</li>
-            <li>Loan Ngo Thi Ngoc</li>
+            <li>Loan Ngoc</li>
           </ul>
           <strong>Etour:</strong>
           <ul>

@@ -67,7 +67,13 @@ Accessing them is straightforward: [http://localhost:3000/landing/fi] [http://lo
 ## Cloud Functions
 
 We have one Cloud Function deployed to the GCP (found under /gfunctions - folder along with deployment scripts). It is used to reset all cache keys, as the TTL should be set to a high value, so we are easing off the load from the DB.
+## API Endpoints
 
+The pages/api directory is mapped to /api/*. Files in this directory are treated as API routes instead of React pages, this is where our endpoints are found. So the API routes can be accessed on http://localhost:3000/api/. these endpoints can be edited in pages/api/*.ts. 
+
+Backend logic itself is found under backend – folder. Note that although backend logic exists under the backend - folder, the routes are in the pages/api - folder. 
+
+API-documentation is generated on the fly using apiDoc, and is found in the docs/apidoc-folder. 
 # Deployment
 
 The deployment scripts work using the `gloud command-line tool`, you need to have it downloaded and installed, and configured on the account that you want to deploy the project to.

@@ -12,7 +12,7 @@ The solution uses Firestore as the DB, as well as Redis for caching the requests
 
 ### API Endpoint documentation
 
-See this: [Built with apidocs](https://juhokon.github.io/NextJS-Test/apidoc/index.html). This is a link to the docs/apidoc - folders HTML - file, which contains the documentation. The file can be accessed directly, or you can configure for example, github pages to show the docs.
+API-docs are found under the docs/apidoc - folders as a HTML file. The file can be accessed directly, or you can configure for example, github pages to show the docs.
 
 # Development
 

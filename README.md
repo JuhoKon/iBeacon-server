@@ -1,10 +1,10 @@
-# iBeacon | NextJS Backend & Frontend
+# iBeacon | NextJS Backend & Frontend & Cloud Functions
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Architecture
 
-In the iBeacon project, NextJS is used as the backend to provide API endpoints for the mobile client, and as a frontend for providing a few static pages, and a dynamic web template.
+In the iBeacon project, NextJS is used as the backend to provide API endpoints for the mobile client, and as a frontend for providing a few static pages, and a dynamic web template. This repository consists of a NextJS project, and one Cloud Function under /gfunctions - folder. Deployment and build scripts exists for GCP.
 
 ![architecture](https://user-images.githubusercontent.com/37773658/114718159-69977980-9d3e-11eb-9791-df560c21f4c1.PNG)
 
@@ -12,13 +12,12 @@ The solution uses Firestore as the DB, as well as Redis for caching the requests
 
 ### API Endpoint documentation
 
-See this: [Built with apidocs](https://juhokon.github.io/NextJS-Test/apidoc/index.html).
-
+See this: [Built with apidocs](https://juhokon.github.io/NextJS-Test/apidoc/index.html). This is a link to the docs/apidoc - folders HTML - file, which contains the documentation. The file can be accessed directly, or you can configure for example, github pages to show the docs.
 # Development
 
 ## Redis
 
-In order to develop the application locally you need to have `Redis` running on your system! The host and port for development is configured on the `.env` - file.
+In order to develop the application locally you need to have `Redis` running on your system! The host and port for development is configured on the `.env` - file. Redis: https://redis.io/documentation 
 
 ## Database
 
@@ -54,9 +53,9 @@ Note that although backend logic exists under the `backend` - folder, the `route
 
 ## Pages
 
-The application uses dynamic routing. Pages are found in `pages/content[groupId]/[beaconInfoId]/[loc].tsx`. For example for group 1 and beaconInfoId 12, the page would be: [http://localhost:3000/content/1/12/en](English) [http://localhost:3000/content/1/12/fi](Finnish). The routing and data fetching are done by groupdId and beaconInfoId, beaconInfo-objects exist inside the Tour-object. See database documentation for more information on how the DB schema and logic works.
+The application uses dynamic routing. Pages are found in `pages/content[groupId]/[beaconInfoId]/[loc].tsx`. For example for group 1 and beaconInfoId 12, the page would be: [http://localhost:3000/content/1/12/en](English) [http://localhost:3000/content/1/12/fi](Finnish). 
 
-Data fetching itself is done server-side on the page.
+The routing and data fetching are done by groupdId and beaconInfoId, beaconInfo-objects exist inside the Tour-object. Upon request, the React component first fetches data from the DB/cache based on the request query (/content/X/Y/en), then populates the template, NextJS renders the HTML Server-Side, and returns the rendered HTML to the requester. See database documentation for more information on how the DB schema and logic works.
 
 ### Static pages
 
@@ -67,7 +66,13 @@ Accessing them is straightforward: [http://localhost:3000/landing/fi] [http://lo
 ## Cloud Functions
 
 We have one Cloud Function deployed to the GCP (found under /gfunctions - folder along with deployment scripts). It is used to reset all cache keys, as the TTL should be set to a high value, so we are easing off the load from the DB.
+## API Endpoints
 
+The pages/api directory is mapped to /api/*. Files in this directory are treated as API routes instead of React pages, this is where our endpoints are found. So the API routes can be accessed on http://localhost:3000/api/. these endpoints can be edited in pages/api/*.ts. 
+
+Backend logic itself is found under backend – folder. Note that although backend logic exists under the backend - folder, the routes are in the pages/api - folder. 
+
+API-documentation is generated on the fly using apiDoc, and is found in the docs/apidoc-folder. 
 # Deployment
 
 The deployment scripts work using the `gloud command-line tool`, you need to have it downloaded and installed, and configured on the account that you want to deploy the project to.
@@ -93,10 +98,6 @@ cd scripts/ && ./deploy.sh
 
 You can edit the scripts if you need to change configurations (such as REDIS IP change). The build script builds a container image (see the `Dockerfile`), loads the image to the Container Registry, and the deploy script then deploys the container image to Cloud Run, [instructions.](https://cloud.google.com/run/docs/quickstarts/build-and-deploy)
 
-Once the application is running in the Google Cloud environment, it uses the default service account to interact and call other Google Cloud APIs. In our case, it uses the Firestore DB and Memorystore Redis. You might need to change the Service Account's access rights.
-
-To use memorystore (Redis) on the Google Cloud, we need to configure Serverless VPC Access (`deploy.sh` - file has the configuration for `Redis host` and `Redis port`). Cloud Run must also be in the same region as the Redis instance. For instructions see: [instructions.](https://cloud.google.com/memorystore/docs/redis/connect-redis-instance-cloud-run)
-
 ![gcloudbuild](https://user-images.githubusercontent.com/37773658/114723953-c6496300-9d43-11eb-9beb-bfc633c7fe53.PNG)
 `Figure of the build process in GCP.`
 
@@ -107,6 +108,10 @@ Also to build apiDoc, you need to have apiDoc installed globally.
 ```
 
 ## GCP Environment figure
+
+Once the application is running in the Google Cloud environment, it uses the default service account to interact and call other Google Cloud APIs. In our case, it uses the Firestore DB and Memorystore Redis. You might need to change the Service Account's access rights. 
+
+To use memorystore (Redis) on the Google Cloud, we need to configure Serverless VPC Access (deploy.sh - file has the configuration for Redis host and Redis port!). Cloud Run must also be in the same region as the Redis instance (See Fig X.). For more instructions see: https://cloud.google.com/memorystore/docs/redis/connect-redis-instance-cloud-run. 
 
 ![gcloudarch](https://user-images.githubusercontent.com/37773658/114723913-ba5da100-9d43-11eb-94a1-085b44960316.PNG)
 `Figure of the Google Cloud Environment`

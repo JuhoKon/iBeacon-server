@@ -8,7 +8,7 @@ In the iBeacon project, NextJS is used as the backend to provide API endpoints f
 
 ![architecture](https://user-images.githubusercontent.com/37773658/114718159-69977980-9d3e-11eb-9791-df560c21f4c1.PNG)
 
-The solution uses Firestore as the DB, as well as Redis for caching the requests (BE sets keys with a TTL, when keys expire, BE updates the keys in the cache).
+The solution uses Firestore as the DB, as well as Redis for caching the requests (BE sets keys with a TTL, when keys expire, BE updates the keys in the cache). TTL-value is found under /lib/Constants.ts
 
 ### API Endpoint documentation
 

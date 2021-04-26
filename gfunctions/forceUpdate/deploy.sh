@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REDISHOST=10.106.239.43
+REDISHOST=10.194.53.3
 REDISPORT=6379
 REGION=europe-west3
 PROJECTID=$(gcloud config get-value project)

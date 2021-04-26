@@ -56,7 +56,7 @@ Note that although backend logic exists under the `backend` - folder, the `route
 
 The application uses dynamic routing. Pages are found in `pages/content[groupId]/[beaconInfoId]/[loc].tsx`. For example for group 1 and beaconInfoId 12, the page would be: [http://localhost:3000/content/1/12/en](English) [http://localhost:3000/content/1/12/fi](Finnish). The routing and data fetching are done by groupdId and beaconInfoId, beaconInfo-objects exist inside the Tour-object. See database documentation for more information on how the DB schema and logic works.
 
-Data fetching itself is done server-side on the page.
+The routing and data fetching are done by groupdId and beaconInfoId, beaconInfo-objects exist inside the Tour-object. Upon request, the React component first fetches data from the DB/cache based on the request query (/content/X/Y/en), then populates the template, NextJS renders the HTML Server-Side, and returns the rendered HTML to the requester.  
 
 ### Static pages
 
@@ -113,6 +113,10 @@ Also to build apiDoc, you need to have apiDoc installed globally.
 ```
 
 ## GCP Environment figure
+
+Once the application is running in the Google Cloud environment, it uses the default service account to interact and call other Google Cloud APIs. In our case, it uses the Firestore DB and Memorystore Redis. You might need to change the Service Account's access rights. 
+
+To use memorystore (Redis) on the Google Cloud, we need to configure Serverless VPC Access (deploy.sh - file has the configuration for Redis host and Redis port!). Cloud Run must also be in the same region as the Redis instance (See Fig X.). For more instructions see: https://cloud.google.com/memorystore/docs/redis/connect-redis-instance-cloud-run. 
 
 ![gcloudarch](https://user-images.githubusercontent.com/37773658/114723913-ba5da100-9d43-11eb-94a1-085b44960316.PNG)
 `Figure of the Google Cloud Environment`

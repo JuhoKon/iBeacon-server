@@ -1,10 +1,10 @@
-# iBeacon | NextJS Backend & Frontend
+# iBeacon | NextJS Backend & Frontend & Cloud Functions
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Architecture
 
-In the iBeacon project, NextJS is used as the backend to provide API endpoints for the mobile client, and as a frontend for providing a few static pages, and a dynamic web template.
+In the iBeacon project, NextJS is used as the backend to provide API endpoints for the mobile client, and as a frontend for providing a few static pages, and a dynamic web template. This repository consists of a NextJS project, and one Cloud Function under /gfunctions - folder. Deployment and build scripts exists for GCP.
 
 ![architecture](https://user-images.githubusercontent.com/37773658/114718159-69977980-9d3e-11eb-9791-df560c21f4c1.PNG)
 

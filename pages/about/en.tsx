@@ -32,7 +32,7 @@ const AboutPage = (): ReactElement => {
             <li>Piret Niva</li>
             <li>Riina Purovesi</li>
             <li>Mahyar Mohammadi</li>
-            <li>Loan Ngoc</li>
+            <li>Loan Ngo</li>
           </ul>
           <strong>Etour:</strong>
           <ul>

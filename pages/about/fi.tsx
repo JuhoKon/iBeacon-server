@@ -24,7 +24,11 @@ const AboutPage = (): ReactElement => {
         </p>
         <div>
           <strong>Tiimi:</strong>
-          <p>etour@mail.com</p>
+          <div>
+            Sähköposti: &nbsp;
+            <a href="mailto: beacon.etour@gmail.com">beacon.etour@gmail.com</a>
+          </div>
+
           <ul>
             <li>Juho Kontiainen</li>
             <li>Topi Penttilä</li>
@@ -35,7 +39,12 @@ const AboutPage = (): ReactElement => {
           </ul>
           <strong>Etour:</strong>
           <ul>
-            <li>Linkki eTour/GitHub</li>
+            <li>
+              GitHub: &nbsp;
+              <a href="https://github.com/Beacon-etour">
+                https://github.com/Beacon-etour
+              </a>
+            </li>
           </ul>
         </div>
       </div>
